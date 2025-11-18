@@ -1,152 +1,208 @@
-<!-- Updated projects.html with additional projects -->
-<!-- I will insert the three new projects into the grid with proper descriptions -->
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects - Samarth Nagpure | Software Developer</title>
+  <title>Projects | Samarth Nagpure</title>
   
   <link rel="icon" href="favicon.ico" type="image/x-icon"> 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: '#2563EB',
+            dark: '#0F172A',
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
 
   <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f9fafb;
-    }
-    h1, h2, h3, h4 {
-      font-family: 'Montserrat', sans-serif;
-    }
-    .accent-color {
-      color: #3B82F6;
-    }
-    .hover-grow {
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    }
-    .hover-grow:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    .nav-link-underline {
-      position: relative;
-      display: inline-block;
-    }
-    .nav-link-underline::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -2px;
-      left: 0;
-      background-color: #3B82F6;
-      transition: width 0.3s ease-out;
-    }
-    .nav-link-underline:hover::after {
-      width: 100%;
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background-color: #94a3b8; }
+    
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
   </style>
 </head>
-<body class="antialiased">
+<body class="bg-slate-50 text-slate-700 antialiased selection:bg-blue-100 selection:text-blue-700">
 
-  <header class="bg-white shadow-md p-4 flex justify-between items-center sticky top-0 z-20 border-b border-gray-200">
-    <h1 class="text-2xl font-bold text-gray-900">
-      <a href="index.html" class="hover:text-gray-700 transition-colors">Samarth Nagpure</a>
-    </h1>
-    <nav class="space-x-6" aria-label="Main Navigation">
-      <a href="index.html" class="text-gray-600 hover:text-gray-900 nav-link-underline font-medium">Home</a>
-      <a href="projects.html" class="text-gray-600 hover:text-gray-900 nav-link-underline font-medium">Projects</a>
-      <a href="contact.html" class="text-gray-600 hover:text-gray-900 nav-link-underline font-medium">Contact</a>
-    </nav>
+  <header class="glass-nav fixed w-full top-0 z-50 border-b border-slate-200 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-slate-900 tracking-tight">
+        <a href="index.html" class="hover:text-primary transition-colors">Samarth<span class="text-primary">.dev</span></a>
+      </h1>
+      <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+        <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+        <a href="projects.html" class="text-primary font-semibold">Projects</a>
+        <a href="contact.html" class="hover:text-primary transition-colors">Contact</a>
+      </nav>
+      <button class="md:hidden text-slate-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
   </header>
 
-  <main class="p-6 max-w-6xl mx-auto">
-    <section class="my-10 py-8">
-      <h2 class="text-4xl font-extrabold text-center mb-10 text-gray-900 border-b-2 border-blue-300 pb-4">My Projects</h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-
-        <!-- EXISTING PROJECTS (unchanged) -->
-        <!-- Billing App -->
-        ...
-
-        <!-- NEW PROJECTS ADDED BELOW -->
-
-        <!-- AI Chat Bot -->
-        <article class="bg-white p-6 rounded-2xl shadow-md hover-grow">
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">AI Chat Bot (Web App)</h3>
-          <p class="mb-4 text-gray-700 leading-relaxed">An intelligent AI-powered chatbot built to simulate human-like conversations. Designed using modern web technologies, it features:</p>
-          <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
-            <li>Fast and responsive chat interface.</li>
-            <li>Real-time message rendering with smooth UI.</li>
-            <li>Simple yet elegant design for seamless interactions.</li>
-          </ul>
-          <div class="flex flex-wrap gap-3">
-            <a href="https://codewithsamarthx.github.io/Ai-chat-bot/" target="_blank" class="accent-color hover:text-blue-600 font-semibold">View Project</a>
-            <a href="https://github.com/codewithsamarthx/Ai-chat-bot" target="_blank" class="accent-color hover:text-blue-600 font-semibold">GitHub Repo</a>
-          </div>
-        </article>
-
-        <!-- Smart Home Hub -->
-        <article class="bg-white p-6 rounded-2xl shadow-md hover-grow">
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">Smart Home Hub (IoT UI)</h3>
-          <p class="mb-4 text-gray-700 leading-relaxed">A modern smart home control dashboard interface created to manage lights, fans, and home devices. Key features:</p>
-          <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
-            <li>Interactive device control interface.</li>
-            <li>Clean, futuristic UI theme.</li>
-            <li>Fast performance with responsive layout.</li>
-          </ul>
-          <div class="flex flex-wrap gap-3">
-            <a href="https://codewithsamarthx.github.io/Smart-Home-Hub/" target="_blank" class="accent-color hover:text-blue-600 font-semibold">View Project</a>
-            <a href="https://github.com/codewithsamarthx/Smart-Home-Hub" target="_blank" class="accent-color hover:text-blue-600 font-semibold">GitHub Repo</a>
-          </div>
-        </article>
-
-        <!-- Cloud Storage UI -->
-        <article class="bg-white p-6 rounded-2xl shadow-md hover-grow">
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">Cloud Storage UI (Web App)</h3>
-          <p class="mb-4 text-gray-700 leading-relaxed">A visually appealing cloud-storage themed interface showcasing file management concepts. Highlights include:</p>
-          <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
-            <li>Beautiful folder & file layout UI.</li>
-            <li>Well-designed icons and animations.</li>
-            <li>Great front-end practice project for creativity.</li>
-          </ul>
-          <div class="flex flex-wrap gap-3">
-            <a href="https://codewithsamarthx.github.io/Cloud-Storage-/" target="_blank" class="accent-color hover:text-blue-600 font-semibold">View Project</a>
-            <a href="https://github.com/codewithsamarthx/Cloud-Storage-" target="_blank" class="accent-color hover:text-blue-600 font-semibold">GitHub Repo</a>
-          </div>
-        </article>
-
-      </div>
+  <main class="pt-24 pb-12 px-6 max-w-6xl mx-auto">
+    
+    <section class="mb-12 text-center animate-fade-in-up">
+      <span class="text-primary font-semibold tracking-wider uppercase text-sm">Portfolio</span>
+      <h2 class="text-4xl font-extrabold text-slate-900 mt-2 mb-4">Selected Works</h2>
+      <p class="text-slate-500 max-w-2xl mx-auto text-lg">
+        A collection of projects ranging from desktop software to modern web applications and AI integrations.
+      </p>
     </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in-up" style="animation-delay: 0.2s;">
+
+      <article class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+        <div class="h-2 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+        <div class="p-8 flex-1 flex flex-col">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-xl font-bold text-slate-900">Billing Software</h3>
+            <div class="p-2 bg-blue-50 rounded-full text-blue-600">
+               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-6 leading-relaxed">
+            Developed a comprehensive Java-based application with a Swing UI for streamlined billing, inventory, and customer management.
+          </p>
+          <div class="mt-auto">
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">Java</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">Swing</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">MySQL</span>
+            </div>
+            <a href="#" class="w-full block text-center py-2.5 rounded-lg border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 hover:text-primary transition-colors">View Details</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+        <div class="h-2 bg-gradient-to-r from-purple-600 to-pink-500"></div>
+        <div class="p-8 flex-1 flex flex-col">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-xl font-bold text-slate-900">AI Chat Bot</h3>
+            <div class="p-2 bg-purple-50 rounded-full text-purple-600">
+               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-6 leading-relaxed">
+            An intelligent AI-powered chatbot built to simulate human-like conversations. Features real-time message rendering and a sleek UI.
+          </p>
+          <div class="mt-auto">
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">JavaScript</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">API</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">Frontend</span>
+            </div>
+            <div class="flex gap-3">
+              <a href="https://codewithsamarthx.github.io/Ai-chat-bot/" target="_blank" class="flex-1 text-center py-2.5 rounded-lg bg-slate-900 text-white font-medium hover:bg-primary transition-colors text-sm">Live Demo</a>
+              <a href="https://github.com/codewithsamarthx/Ai-chat-bot" target="_blank" class="flex-1 text-center py-2.5 rounded-lg border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 transition-colors text-sm">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+        <div class="h-2 bg-gradient-to-r from-emerald-500 to-teal-400"></div>
+        <div class="p-8 flex-1 flex flex-col">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-xl font-bold text-slate-900">Smart Home Hub</h3>
+            <div class="p-2 bg-emerald-50 rounded-full text-emerald-600">
+               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-6 leading-relaxed">
+            A modern smart home control dashboard interface designed to manage lights, fans, and devices with a clean, futuristic aesthetic.
+          </p>
+          <div class="mt-auto">
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">IoT Design</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">CSS Grid</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">Responsive</span>
+            </div>
+            <div class="flex gap-3">
+              <a href="https://codewithsamarthx.github.io/Smart-Home-Hub/" target="_blank" class="flex-1 text-center py-2.5 rounded-lg bg-slate-900 text-white font-medium hover:bg-primary transition-colors text-sm">Live Demo</a>
+              <a href="https://github.com/codewithsamarthx/Smart-Home-Hub" target="_blank" class="flex-1 text-center py-2.5 rounded-lg border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 transition-colors text-sm">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+        <div class="h-2 bg-gradient-to-r from-indigo-500 to-violet-500"></div>
+        <div class="p-8 flex-1 flex flex-col">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-xl font-bold text-slate-900">Cloud Storage UI</h3>
+            <div class="p-2 bg-indigo-50 rounded-full text-indigo-600">
+               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+            </div>
+          </div>
+          <p class="text-slate-600 mb-6 leading-relaxed">
+            A visually appealing cloud-storage themed interface showcasing advanced file management UI concepts with beautiful folder animations.
+          </p>
+          <div class="mt-auto">
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">UI/UX</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">Animation</span>
+              <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs rounded-md font-medium">Layout</span>
+            </div>
+            <div class="flex gap-3">
+              <a href="https://codewithsamarthx.github.io/Cloud-Storage-/" target="_blank" class="flex-1 text-center py-2.5 rounded-lg bg-slate-900 text-white font-medium hover:bg-primary transition-colors text-sm">Live Demo</a>
+              <a href="https://github.com/codewithsamarthx/Cloud-Storage-" target="_blank" class="flex-1 text-center py-2.5 rounded-lg border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 transition-colors text-sm">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
   </main>
 
-    <footer class="bg-gray-900 text-white text-center p-8 mt-16 shadow-inner">
-    <h3 class="text-2xl font-bold text-white mb-6">Connect with Me</h3>
-    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
-      <div class="flex items-center justify-center">
-        <svg class="w-6 h-6 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
-        <a href="mailto:samarthnagpure47@gmail.com" class="text-gray-300 hover:text-accent-color transition-colors text-lg" aria-label="Email Samarth Nagpure">
-          samarthnagpure47@gmail.com
-        </a>
+  <footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-4 md:mb-0">
+        <h3 class="text-xl font-bold text-white">Samarth Nagpure</h3>
+        <p class="text-sm text-slate-500 mt-1">Software Developer & UI Designer</p>
       </div>
-      <div class="flex items-center justify-center">
-        <svg class="w-6 h-6 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.608c-3.264 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.684-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.684.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.684.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.569 15.264.555 12 .555z"/><path d="M12 6.848c-2.834 0-5.152 2.318-5.152 5.152s2.318 5.152 5.152 5.152 5.152-2.318 5.152-5.152-2.318-5.152-5.152-5.152zm0 8.704c-1.96 0-3.552-1.592-3.552-3.552s1.592-3.552 3.552-3.552 3.552 1.592 3.552 3.552-1.592 3.552-3.552 3.552zm4.908-8.108c-.768 0-1.392.624-1.392 1.392s.624 1.392 1.392 1.392 1.392-.624 1.392-1.392-.624-1.392-1.392-1.392z"/></svg>
-        <a href="https://instagram.com/itx_samarth_56" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-accent-color transition-colors text-lg" aria-label="Samarth Nagpure's Instagram profile">
-          @itx_samarth_56
+      
+      <div class="flex space-x-6">
+        <a href="mailto:samarthnagpure47@gmail.com" class="hover:text-white transition-colors" aria-label="Email">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
         </a>
-      </div>
-      <div class="flex items-center justify-center">
-        <svg class="w-6 h-6 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        <a href="https://github.com/Samarthnagpure-byte" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-accent-color transition-colors text-lg" aria-label="Samarth Nagpure's GitHub profile">
-          Samarthnagpure-byte
+        <a href="https://instagram.com/itx_samarth_56" target="_blank" class="hover:text-white transition-colors" aria-label="Instagram">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.608c-3.264 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.684-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.684.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.684.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.569 15.264.555 12 .555z"/><path d="M12 6.848c-2.834 0-5.152 2.318-5.152 5.152s2.318 5.152 5.152 5.152 5.152-2.318 5.152-5.152-2.318-5.152-5.152-5.152zm0 8.704c-1.96 0-3.552-1.592-3.552-3.552s1.592-3.552 3.552-3.552 3.552 1.592 3.552 3.552-1.592 3.552-3.552 3.552zm4.908-8.108c-.768 0-1.392.624-1.392 1.392s.624 1.392 1.392 1.392 1.392-.624 1.392-1.392-.624-1.392-1.392-1.392z"/></path></svg>
+        </a>
+        <a href="https://github.com/Samarthnagpure-byte" target="_blank" class="hover:text-white transition-colors" aria-label="GitHub">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         </a>
       </div>
     </div>
-    <p class="text-gray-400 text-sm">&copy; 2025 Samarth Nagpure. All rights reserved.</p>
+    <div class="text-center mt-8 text-xs text-slate-600">
+      &copy; 2025 Samarth Nagpure. All rights reserved.
+    </div>
   </footer>
-
 </body>
 </html>
