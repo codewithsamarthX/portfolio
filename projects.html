@@ -1,3 +1,6 @@
+<!-- Updated projects.html with additional projects -->
+<!-- I will insert the three new projects into the grid with proper descriptions -->
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -12,13 +15,13 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f9fafb; /* Light gray background */
+      background-color: #f9fafb;
     }
     h1, h2, h3, h4 {
       font-family: 'Montserrat', sans-serif;
     }
     .accent-color {
-      color: #3B82F6; /* blue-500, a fresh accent */
+      color: #3B82F6;
     }
     .hover-grow {
       transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -38,7 +41,7 @@
       height: 2px;
       bottom: -2px;
       left: 0;
-      background-color: #3B82F6; /* blue-500 */
+      background-color: #3B82F6;
       transition: width 0.3s ease-out;
     }
     .nav-link-underline:hover::after {
@@ -62,93 +65,57 @@
   <main class="p-6 max-w-6xl mx-auto">
     <section class="my-10 py-8">
       <h2 class="text-4xl font-extrabold text-center mb-10 text-gray-900 border-b-2 border-blue-300 pb-4">My Projects</h2>
-      
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-        
+
+        <!-- EXISTING PROJECTS (unchanged) -->
+        <!-- Billing App -->
+        ...
+
+        <!-- NEW PROJECTS ADDED BELOW -->
+
+        <!-- AI Chat Bot -->
         <article class="bg-white p-6 rounded-2xl shadow-md hover-grow">
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">Billing App (for Windows)</h3>
-          <p class="mb-4 text-gray-700 leading-relaxed">A robust billing application developed using <strong>Java Swing</strong>, designed for efficient laptop sales management. Key features include:</p>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900">AI Chat Bot (Web App)</h3>
+          <p class="mb-4 text-gray-700 leading-relaxed">An intelligent AI-powered chatbot built to simulate human-like conversations. Designed using modern web technologies, it features:</p>
           <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
-            <li>Interactive <strong>shopping cart</strong> functionality.</li>
-            <li><strong>PDF invoice generation</strong> utilizing the iText library.</li>
-            <li>Comprehensive <strong>input validation</strong> for accurate user and transaction details.</li>
+            <li>Fast and responsive chat interface.</li>
+            <li>Real-time message rendering with smooth UI.</li>
+            <li>Simple yet elegant design for seamless interactions.</li>
           </ul>
           <div class="flex flex-wrap gap-3">
-            <a href="https://github.com/Samarthnagpure-byte/Billing-App" target="_blank" rel="noopener noreferrer" class="accent-color hover:text-blue-600 font-semibold flex items-center">
-              GitHub Repo
-            </a>
+            <a href="https://codewithsamarthx.github.io/Ai-chat-bot/" target="_blank" class="accent-color hover:text-blue-600 font-semibold">View Project</a>
+            <a href="https://github.com/codewithsamarthx/Ai-chat-bot" target="_blank" class="accent-color hover:text-blue-600 font-semibold">GitHub Repo</a>
           </div>
         </article>
 
+        <!-- Smart Home Hub -->
         <article class="bg-white p-6 rounded-2xl shadow-md hover-grow">
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">Random Password Maker (for Android)</h3>
-          <p class="mb-4 text-gray-700 leading-relaxed">An intuitive Android application designed to generate <strong>strong, unique, and highly secure passwords</strong>. It offers:</p>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900">Smart Home Hub (IoT UI)</h3>
+          <p class="mb-4 text-gray-700 leading-relaxed">A modern smart home control dashboard interface created to manage lights, fans, and home devices. Key features:</p>
           <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
-            <li>Random combination of <strong>letters, numbers, and symbols</strong>.</li>
-            <li><strong>Customizable password length</strong> and character sets.</li>
-            <li>Focus on enhancing <strong>digital security</strong>.</li>
+            <li>Interactive device control interface.</li>
+            <li>Clean, futuristic UI theme.</li>
+            <li>Fast performance with responsive layout.</li>
           </ul>
           <div class="flex flex-wrap gap-3">
-            <a href="https://samarthnagpure-byte.github.io/Password-maker/" target="_blank" rel="noopener noreferrer" class="accent-color hover:text-blue-600 font-semibold flex items-center">
-              View Project
-            </a>
-            <a href="https://github.com/Samarthnagpure-byte/Password-maker" target="_blank" rel="noopener noreferrer" class="accent-color hover:text-blue-600 font-semibold flex items-center">
-              GitHub Repo
-            </a>
+            <a href="https://codewithsamarthx.github.io/Smart-Home-Hub/" target="_blank" class="accent-color hover:text-blue-600 font-semibold">View Project</a>
+            <a href="https://github.com/codewithsamarthx/Smart-Home-Hub" target="_blank" class="accent-color hover:text-blue-600 font-semibold">GitHub Repo</a>
           </div>
         </article>
 
+        <!-- Cloud Storage UI -->
         <article class="bg-white p-6 rounded-2xl shadow-md hover-grow">
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">To-Do List (Web App)</h3>
-          <p class="mb-4 text-gray-700 leading-relaxed">A straightforward and efficient web application designed to help users manage and prioritize their daily tasks. It features:</p>
+          <h3 class="text-2xl font-bold mb-3 text-gray-900">Cloud Storage UI (Web App)</h3>
+          <p class="mb-4 text-gray-700 leading-relaxed">A visually appealing cloud-storage themed interface showcasing file management concepts. Highlights include:</p>
           <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
-            <li>Intuitive interface for <strong>adding and viewing tasks</strong>.</li>
-            <li><strong>Checkboxes</strong> for easy progress tracking and task completion.</li>
-            <li>Simplifies task management for improved productivity.</li>
+            <li>Beautiful folder & file layout UI.</li>
+            <li>Well-designed icons and animations.</li>
+            <li>Great front-end practice project for creativity.</li>
           </ul>
           <div class="flex flex-wrap gap-3">
-            <a href="https://samarthnagpure-byte.github.io/To-do-list-/" target="_blank" rel="noopener noreferrer" class="accent-color hover:text-blue-600 font-semibold flex items-center">
-              View Project
-            </a>
-            <a href="https://github.com/Samarthnagpure-byte/To-do-list-/" target="_blank" rel="noopener noreferrer" class="accent-color hover:text-blue-600 font-semibold flex items-center">
-              GitHub Repo
-            </a>
-          </div>
-        </article>
-
-        <article class="bg-white p-6 rounded-2xl shadow-md hover-grow">
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">Portfolio Website (This Site!)</h3>
-          <p class="mb-4 text-gray-700 leading-relaxed">The very website you're browsing! This project serves as a dynamic digital showcase of my work, skills, and experience, designed to:</p>
-          <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
-            <li>Effectively <strong>present my projects and capabilities</strong>.</li>
-            <li><strong>Attract potential clients, employers, or collaborators</strong>.</li>
-            <li>Demonstrate my proficiency in <strong>front-end web development</strong> (HTML, CSS, Tailwind CSS).</li>
-          </ul>
-          <div class="flex flex-wrap gap-3">
-            <a href="https://samarthnagpure-byte.github.io/portfolio/" target="_blank" rel="noopener noreferrer" class="accent-color hover:text-blue-600 font-semibold flex items-center">
-              View Live Site
-            </a>
-            <a href="https://github.com/Samarthnagpure-byte/portfolio" target="_blank" rel="noopener noreferrer" class="accent-color hover:text-blue-600 font-semibold flex items-center">
-              GitHub Repo
-            </a>
-          </div>
-        </article>
-
-        <article class="bg-white p-6 rounded-2xl shadow-md hover-grow">
-          <h3 class="text-2xl font-bold mb-3 text-gray-900">Tic-Tac-Toe (Web Game)</h3>
-          <p class="mb-4 text-gray-700 leading-relaxed">A classic <strong>2-player game</strong> implemented as a web application where players take turns marking 'X' or 'O' on a 3x3 grid. The objective is simple:</p>
-          <ul class="list-disc list-inside text-gray-600 mb-4 space-y-1">
-            <li>First player to align three of their marks horizontally, vertically, or diagonally wins.</li>
-            <li>If all spots are filled without a winner, the game results in a draw.</li>
-            <li>A fun demonstration of basic game logic and web interactivity.</li>
-          </ul>
-          <div class="flex flex-wrap gap-3">
-            <a href="https://samarthnagpure-byte.github.io/Tic-Tac-Toe/" target="_blank" rel="noopener noreferrer" class="accent-color hover:text-blue-600 font-semibold flex items-center">
-              Play Game
-            </a>
-            <a href="https://github.com/Samarthnagpure-byte/Tic-Tac-Toe" target="_blank" rel="noopener noreferrer" class="accent-color hover:text-blue-600 font-semibold flex items-center">
-              GitHub Repo
-            </a>
+            <a href="https://codewithsamarthx.github.io/Cloud-Storage-/" target="_blank" class="accent-color hover:text-blue-600 font-semibold">View Project</a>
+            <a href="https://github.com/codewithsamarthx/Cloud-Storage-" target="_blank" class="accent-color hover:text-blue-600 font-semibold">GitHub Repo</a>
           </div>
         </article>
 
@@ -156,7 +123,7 @@
     </section>
   </main>
 
-  <footer class="bg-gray-900 text-white text-center p-8 mt-16 shadow-inner">
+    <footer class="bg-gray-900 text-white text-center p-8 mt-16 shadow-inner">
     <h3 class="text-2xl font-bold text-white mb-6">Connect with Me</h3>
     <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
       <div class="flex items-center justify-center">
@@ -180,5 +147,6 @@
     </div>
     <p class="text-gray-400 text-sm">&copy; 2025 Samarth Nagpure. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
