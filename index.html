@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samarth Nagpure | Software Developer</title>
-  
-  <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -17,8 +18,8 @@
             sans: ['Inter', 'sans-serif'],
           },
           colors: {
-            primary: '#2563EB', // a professional Royal Blue
-            dark: '#0F172A',    // Slate 900
+            primary: '#2563EB',
+            dark: '#0F172A',
           },
           animation: {
             'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
@@ -40,21 +41,23 @@
   </script>
 
   <style>
-
     ::-webkit-scrollbar {
       width: 8px;
     }
+
     ::-webkit-scrollbar-track {
       background: #f1f5f9;
     }
+
     ::-webkit-scrollbar-thumb {
       background-color: #cbd5e1;
       border-radius: 4px;
     }
+
     ::-webkit-scrollbar-thumb:hover {
       background-color: #94a3b8;
     }
-    
+
     .glass-nav {
       background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(12px);
@@ -62,60 +65,101 @@
     }
   </style>
 </head>
+
 <body class="bg-slate-50 text-slate-700 antialiased selection:bg-blue-100 selection:text-blue-700">
 
+  <!-- NAVBAR -->
   <header class="glass-nav fixed w-full top-0 z-50 border-b border-slate-200 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
+
+      <!-- Logo -->
       <h1 class="text-xl font-bold text-slate-900 tracking-tight">
-        <a href="/" class="hover:text-primary transition-colors">Samarth<span class="text-primary">.dev</span></a>
+        <a href="/" class="hover:text-primary transition-colors">
+          Samarth<span class="text-primary">.dev</span>
+        </a>
       </h1>
+
+      <!-- Desktop Menu -->
       <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
         <a href="#about" class="hover:text-primary transition-colors">About</a>
         <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
         <a href="projects.html" class="hover:text-primary transition-colors">Projects</a>
-        <a href="contact.html" class="px-4 py-2 bg-slate-900 text-white rounded-full hover:bg-primary transition-colors duration-300">Contact Me</a>
+        <a href="contact.html" class="px-4 py-2 bg-slate-900 text-white rounded-full hover:bg-primary transition-colors duration-300">
+          Contact Me
+        </a>
       </nav>
-      <button class="md:hidden text-slate-600">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden text-slate-700 focus:outline-none">
+        <svg id="menuIcon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
       </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu"
+      class="hidden md:hidden px-6 pb-4 pt-2 flex flex-col space-y-4 text-slate-700 bg-white/80 backdrop-blur-lg border-t border-slate-200">
+      <a href="#about" class="hover:text-primary transition">About</a>
+      <a href="#skills" class="hover:text-primary transition">Skills</a>
+      <a href="projects.html" class="hover:text-primary transition">Projects</a>
+      <a href="contact.html"
+        class="py-2 text-center bg-slate-900 text-white rounded-full hover:bg-primary transition">Contact Me</a>
     </div>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main class="pt-24 pb-12 px-6 max-w-6xl mx-auto">
 
+    <!-- HERO SECTION -->
     <section class="min-h-[80vh] flex flex-col-reverse md:flex-row items-center justify-between py-12 md:py-24">
       <div class="md:w-1/2 text-center md:text-left mt-8 md:mt-0 opacity-0 animate-fade-in-up">
-        <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-primary text-xs font-semibold tracking-wide uppercase mb-4 border border-blue-100">
+        <span
+          class="inline-block py-1 px-3 rounded-full bg-blue-50 text-primary text-xs font-semibold tracking-wide uppercase mb-4 border border-blue-100">
           Available for work
         </span>
+
         <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
           Building digital <br>
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500">experiences</span> that matter.
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500">experiences</span>
+          that matter.
         </h2>
+
         <p class="text-lg text-slate-600 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
-          Hi, I'm <strong>Samarth Nagpure</strong>. A Software Developer based in Maharashtra, India. I specialize in transforming complex problems into elegant code.
+          Hi, I'm <strong>Samarth Nagpure</strong>. A Software Developer based in Maharashtra, India. I specialize in
+          transforming complex problems into elegant code.
         </p>
+
         <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
-          <a href="projects.html" class="px-8 py-3.5 rounded-lg bg-primary text-white font-medium hover:bg-blue-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 shadow-blue-500/30 shadow-md">
+          <a href="projects.html"
+            class="px-8 py-3.5 rounded-lg bg-primary text-white font-medium hover:bg-blue-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 shadow-blue-500/30 shadow-md">
             View Projects
           </a>
-          <a href="https://github.com/Samarthnagpure-byte" target="_blank" class="px-8 py-3.5 rounded-lg bg-white text-slate-700 border border-slate-200 font-medium hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 flex items-center justify-center group">
-            <svg class="w-5 h-5 mr-2 text-slate-500 group-hover:text-black transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+
+          <a href="https://github.com/Samarthnagpure-byte" target="_blank"
+            class="px-8 py-3.5 rounded-lg bg-white text-slate-700 border border-slate-200 font-medium hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 flex items-center justify-center group">
+            <svg class="w-5 h-5 mr-2 text-slate-500 group-hover:text-black transition-colors" fill="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
             GitHub
           </a>
         </div>
       </div>
-      
-      <div class="md:w-1/2 flex justify-center md:justify-end relative animate-fade-in opacity-0" style="animation-delay: 0.2s;">
-        <div class="absolute top-0 right-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
-        <div class="absolute top-0 right-10 w-72 h-72 bg-cyan-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob" style="animation-delay: 2s"></div>
-        
+
+      <!-- Hero Image -->
+      <div class="md:w-1/2 flex justify-center md:justify-end relative animate-fade-in opacity-0"
+        style="animation-delay: 0.2s;">
         <div class="relative">
-            <img src="IMG_20250203_221809.png" alt="Samarth Nagpure" class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl shadow-2xl border-4 border-white rotate-3 hover:rotate-0 transition-transform duration-500">
+          <img src="IMG_20250203_221809.png" alt="Samarth Nagpure"
+            class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-2xl shadow-2xl border-4 border-white rotate-3 hover:rotate-0 transition-transform duration-500">
         </div>
       </div>
     </section>
 
+    <!-- ABOUT SECTION -->
     <section id="about" class="py-16">
       <div class="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-slate-100 hover:shadow-md transition-shadow duration-300">
         <div class="flex flex-col md:flex-row gap-12">
@@ -123,166 +167,253 @@
             <h3 class="text-sm font-bold text-primary uppercase tracking-wider mb-2">About Me</h3>
             <h4 class="text-3xl font-bold text-slate-900 mb-6">Turning ideas into functional code.</h4>
             <p class="text-slate-600 leading-relaxed mb-4">
-              I’m a <strong>20-year-old software developer</strong> pursuing my BCA. I have a deep passion for crafting applications that solve real-world problems.
+              I’m a <strong>20-year-old software developer</strong> pursuing my BCA. I have a deep passion for crafting
+              applications that solve real-world problems.
             </p>
             <p class="text-slate-600 leading-relaxed">
-              My journey involves everything from designing robust <strong>billing systems</strong> to exploring the future of <strong>IoT automation</strong>. I am constantly learning, adapting, and pushing the boundaries of what I can build.
+              My journey involves everything from designing robust <strong>billing systems</strong> to exploring the
+              future of <strong>IoT automation</strong>. I am constantly learning, adapting, and pushing the boundaries
+              of what I can build.
             </p>
           </div>
+
           <div class="md:w-1/3 grid grid-cols-2 gap-4">
             <div class="p-4 bg-slate-50 rounded-lg border border-slate-100 text-center">
               <span class="block text-3xl font-bold text-primary">3+</span>
               <span class="text-xs text-slate-500 uppercase font-semibold">Languages</span>
             </div>
+
             <div class="p-4 bg-slate-50 rounded-lg border border-slate-100 text-center">
               <span class="block text-3xl font-bold text-primary">5+</span>
               <span class="text-xs text-slate-500 uppercase font-semibold">Projects</span>
             </div>
+
             <div class="p-4 bg-slate-50 rounded-lg border border-slate-100 text-center col-span-2">
               <span class="block text-lg font-bold text-slate-900">Yeola, India</span>
               <span class="text-xs text-slate-500 uppercase font-semibold">Location</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
+    <!-- SKILLS SECTION -->
     <section id="skills" class="py-12">
       <div class="text-center mb-10">
         <h3 class="text-3xl font-bold text-slate-900">Technical Arsenal</h3>
         <p class="text-slate-500 mt-2">Tools and technologies I use to bring products to life</p>
       </div>
-      
+
       <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-        <div class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-6 h-6" alt="Java">
+        <div
+          class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-6 h-6"
+            alt="Java">
           <span class="font-medium text-slate-700">Java</span>
         </div>
-        <div class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
-            <span class="text-2xl">🐍</span> <span class="font-medium text-slate-700">Python</span>
+
+        <div
+          class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
+          <span class="text-2xl">🐍</span>
+          <span class="font-medium text-slate-700">Python</span>
         </div>
-        <div class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-6 h-6" alt="HTML">
+
+        <div
+          class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-6 h-6"
+            alt="HTML">
           <span class="font-medium text-slate-700">HTML & CSS</span>
         </div>
-        <div class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
+
+        <div
+          class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
           <span class="text-2xl">🎨</span>
           <span class="font-medium text-slate-700">Java Swing UI</span>
         </div>
-        <div class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
+
+        <div
+          class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-6 h-6" alt="Git">
           <span class="font-medium text-slate-700">Git & GitHub</span>
         </div>
-        <div class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
-            <span class="text-2xl">🧩</span>
-            <span class="font-medium text-slate-700">Problem Solving</span>
+
+        <div
+          class="px-5 py-3 bg-white border border-slate-200 rounded-lg shadow-sm flex items-center space-x-2 hover:border-primary hover:shadow-md transition-all cursor-default">
+          <span class="text-2xl">🧩</span>
+          <span class="font-medium text-slate-700">Problem Solving</span>
         </div>
       </div>
     </section>
 
+    <!-- PROJECTS SECTION -->
     <section id="featured-projects" class="py-16">
       <div class="flex justify-between items-end mb-10">
         <div>
-            <h3 class="text-3xl font-bold text-slate-900">Featured Projects</h3>
-            <p class="text-slate-500 mt-2">A selection of my recent work</p>
+          <h3 class="text-3xl font-bold text-slate-900">Featured Projects</h3>
+          <p class="text-slate-500 mt-2">A selection of my recent work</p>
         </div>
+
         <a href="projects.html" class="hidden md:flex items-center text-primary font-medium hover:text-blue-800 transition-colors">
-            View all projects <span class="ml-2">→</span>
+          View all projects <span class="ml-2">→</span>
         </a>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <article class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+
+        <!-- Project 1 -->
+        <article
+          class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
           <div class="h-2 bg-gradient-to-r from-blue-500 to-cyan-400"></div>
           <div class="p-8">
             <div class="flex justify-between items-start mb-4">
-                <h4 class="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors">Billing Software</h4>
-                <svg class="w-6 h-6 text-slate-300 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-            </div>
-            <p class="text-slate-600 mb-6 line-clamp-3">
-              A comprehensive desktop application for inventory and customer management. Streamlines billing processes for small businesses with a robust Swing UI.
-            </p>
-            
-            <div class="flex flex-wrap gap-2 mb-6">
-                <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Java</span>
-                <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Swing</span>
-                <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">SQL</span>
+              <h4 class="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors">Billing Software</h4>
+              <svg class="w-6 h-6 text-slate-300 group-hover:text-primary transition-colors" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
             </div>
 
-            <a href="projects.html#billing-software" class="inline-flex items-center text-sm font-semibold text-primary hover:underline">
+            <p class="text-slate-600 mb-6 line-clamp-3">
+              A comprehensive desktop application for inventory and customer management. Streamlines billing processes
+              for small businesses with a robust Swing UI.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Java</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Swing</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">SQL</span>
+            </div>
+
+            <a href="projects.html#billing-software"
+              class="inline-flex items-center text-sm font-semibold text-primary hover:underline">
               View Case Study
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
             </a>
           </div>
         </article>
 
-        <article class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+        <!-- Project 2 -->
+        <article
+          class="bg-white rounded-xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
           <div class="h-2 bg-gradient-to-r from-green-400 to-emerald-500"></div>
           <div class="p-8">
-             <div class="flex justify-between items-start mb-4">
-                <h4 class="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">IoT Automation Hub</h4>
-                <svg class="w-6 h-6 text-slate-300 group-hover:text-emerald-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+
+            <div class="flex justify-between items-start mb-4">
+              <h4 class="text-xl font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">IoT Automation
+                Hub</h4>
+              <svg class="w-6 h-6 text-slate-300 group-hover:text-emerald-600 transition-colors" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
             </div>
+
             <p class="text-slate-600 mb-6 line-clamp-3">
-              A prototype for intelligent home device integration. Focuses on energy optimization and intuitive web-based control systems using Python.
+              A prototype for intelligent home device integration. Focuses on energy optimization and intuitive web-based
+              control systems using Python.
             </p>
 
             <div class="flex flex-wrap gap-2 mb-6">
-                <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Python</span>
-                <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">IoT</span>
-                <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Web</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Python</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">IoT</span>
+              <span class="px-2 py-1 bg-slate-100 text-slate-600 text-xs rounded font-medium">Web</span>
             </div>
 
-            <a href="projects.html#another-project" class="inline-flex items-center text-sm font-semibold text-primary hover:underline">
+            <a href="projects.html#another-project"
+              class="inline-flex items-center text-sm font-semibold text-primary hover:underline">
               View Prototype
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
             </a>
           </div>
         </article>
 
       </div>
-      
+
       <div class="mt-8 text-center md:hidden">
         <a href="projects.html" class="text-primary font-medium hover:text-blue-800 transition-colors">
-            View all projects →
+          View all projects →
         </a>
       </div>
     </section>
 
   </main>
 
+  <!-- FOOTER -->
   <footer id="contact" class="bg-slate-900 text-slate-300 py-16">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h3 class="text-2xl font-bold text-white mb-6">Let's build something amazing together.</h3>
-      <p class="text-slate-400 mb-8 max-w-xl mx-auto">I'm currently open to internship opportunities and freelance projects. Feel free to reach out.</p>
-      
+      <p class="text-slate-400 mb-8 max-w-xl mx-auto">I'm currently open to internship opportunities and freelance
+        projects. Feel free to reach out.</p>
+
       <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-12">
-        <a href="mailto:samarthnagpure47@gmail.com" class="flex items-center hover:text-white transition-colors group">
+        <a href="mailto:samarthnagpure47@gmail.com"
+          class="flex items-center hover:text-white transition-colors group">
           <span class="p-2 bg-slate-800 rounded-full mr-3 group-hover:bg-primary transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+              </path>
+            </svg>
           </span>
           samarthnagpure47@gmail.com
         </a>
-        <a href="https://github.com/Samarthnagpure-byte" target="_blank" class="flex items-center hover:text-white transition-colors group">
+
+        <a href="https://github.com/Samarthnagpure-byte" target="_blank"
+          class="flex items-center hover:text-white transition-colors group">
           <span class="p-2 bg-slate-800 rounded-full mr-3 group-hover:bg-primary transition-colors">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12">
+              </path>
+            </svg>
           </span>
           GitHub
         </a>
-        <a href="https://instagram.com/itx_samarth_56" target="_blank" class="flex items-center hover:text-white transition-colors group">
+
+        <a href="https://instagram.com/itx_samarth_56" target="_blank"
+          class="flex items-center hover:text-white transition-colors group">
           <span class="p-2 bg-slate-800 rounded-full mr-3 group-hover:bg-pink-600 transition-colors">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.608c-3.264 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.684-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.684.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.684.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.569 15.264.555 12 .555z"/><path d="M12 6.848c-2.834 0-5.152 2.318-5.152 5.152s2.318 5.152 5.152 5.152 5.152-2.318 5.152-5.152-2.318-5.152-5.152-5.152zm0 8.704c-1.96 0-3.552-1.592-3.552-3.552s1.592-3.552 3.552-3.552 3.552 1.592 3.552 3.552-1.592 3.552-3.552 3.552zm4.908-8.108c-.768 0-1.392.624-1.392 1.392s.624 1.392 1.392 1.392 1.392-.624 1.392-1.392-.624-1.392-1.392-1.392z"/></svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.608c-3.264 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.684-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.684.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.684.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.569 15.264.555 12 .555z" />
+              <path
+                d="M12 6.848c-2.834 0-5.152 2.318-5.152 5.152s2.318 5.152 5.152 5.152 5.152-2.318 5.152-5.152-2.318-5.152-5.152-5.152zm0 8.704c-1.96 0-3.552-1.592-3.552-3.552s1.592-3.552 3.552-3.552 3.552 1.592 3.552 3.552-1.592 3.552-3.552 3.552zm4.908-8.108c-.768 0-1.392.624-1.392 1.392s.624 1.392 1.392 1.392 1.392-.624 1.392-1.392-.624-1.392-1.392-1.392z" />
+            </svg>
           </span>
           Instagram
         </a>
       </div>
-      
+
       <div class="border-t border-slate-800 pt-8 text-sm text-slate-500">
         <p>&copy; 2025 Samarth Nagpure. All rights reserved.</p>
       </div>
     </div>
   </footer>
+
+  <!-- MOBILE MENU SCRIPT -->
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Auto close when clicking a link
+    mobileMenu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+    });
+  </script>
+
 </body>
 </html>
-
