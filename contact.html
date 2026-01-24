@@ -12,27 +12,45 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script>
+    // Same tailwind config as index.html
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
             display: ['Space Grotesk', 'sans-serif'],
           },
           colors: {
-            background: '#09090b',
-            surface: '#18181b',
-            surfaceHighlight: '#27272a',
-            primary: '#6366f1',
-            secondary: '#a855f7',
-            accent: '#0ea5e9',
+            light: {
+              background: '#ffffff',
+              surface: '#f8fafc',
+              surfaceHighlight: '#f1f5f9',
+              text: '#334155',
+              textLight: '#64748b',
+              primary: '#4f46e5',
+              secondary: '#0ea5e9',
+              border: '#e2e8f0',
+              card: '#ffffff',
+            },
+            dark: {
+              background: '#09090b',
+              surface: '#18181b',
+              surfaceHighlight: '#27272a',
+              text: '#f8fafc',
+              textLight: '#cbd5e1',
+              primary: '#6366f1',
+              secondary: '#a855f7',
+              border: '#374151',
+              card: '#1f2937',
+            }
           },
           backgroundImage: {
-            'grid-white': "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
+            'grid-light': "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(203 213 225 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
+            'grid-dark': "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
           }
         }
       }
@@ -40,230 +58,634 @@
   </script>
 
   <style>
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #09090b; }
-    ::-webkit-scrollbar-thumb { background-color: #3f3f46; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background-color: #71717a; }
+    /* Same styles as index.html */
+    :root {
+      --scrollbar-track: #f8fafc;
+      --scrollbar-thumb: #cbd5e1;
+      --scrollbar-thumb-hover: #94a3b8;
+    }
 
-    /* Utilities */
-    .glass {
-      background: rgba(24, 24, 27, 0.6);
+    .dark {
+      --scrollbar-track: #09090b;
+      --scrollbar-thumb: #4b5563;
+      --scrollbar-thumb-hover: #6b7280;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--scrollbar-track);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--scrollbar-thumb-hover);
+    }
+
+    * {
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .glass-light {
+      background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
-    
+
+    .glass-dark {
+      background: rgba(24, 24, 27, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
     .text-gradient {
+      background: linear-gradient(to right, #4f46e5, #7c3aed, #0ea5e9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .dark .text-gradient {
       background: linear-gradient(to right, #818cf8, #c084fc, #38bdf8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    /* Reveal Animation */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
+
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 
-<body class="bg-background text-zinc-300 font-sans antialiased selection:bg-indigo-500/30 selection:text-indigo-200 overflow-x-hidden">
+<body class="bg-light-background text-light-text font-sans antialiased selection:bg-light-primary/20 selection:text-light-primary overflow-x-hidden transition-colors duration-300 dark:bg-dark-background dark:text-dark-text dark:selection:bg-dark-primary/30">
 
-  <div class="fixed inset-0 z-[-1] bg-grid-white bg-[length:50px_50px] pointer-events-none"></div>
-  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-  <div class="fixed bottom-0 right-0 w-[800px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+  <!-- Background -->
+  <div class="fixed inset-0 z-[-2] bg-grid-light bg-[length:50px_50px] dark:bg-grid-dark"></div>
+  <!-- Light mode blob -->
+  <div class="blob-light bg-indigo-300 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2 dark:blob-dark dark:bg-indigo-900/20"></div>
+  <div class="blob-light bg-sky-200 w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3 dark:blob-dark dark:bg-purple-900/20"></div>
 
-  <header class="fixed w-full top-0 z-50 transition-all duration-300">
-    <div class="glass border-b border-white/5">
-      <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
-        <a href="index.html" class="text-xl font-bold font-display text-white tracking-tight hover:opacity-80 transition-opacity">
-          Samarth<span class="text-indigo-400">.dev</span>
+  <!-- Header (Same as other pages) -->
+  <header class="fixed w-full top-0 z-50 transition-all duration-300 glass-light dark:glass-dark border-b border-light-border dark:border-dark-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold font-display text-light-text dark:text-dark-text tracking-tight hover:opacity-80 transition-opacity">
+        Samarth<span class="text-light-primary dark:text-dark-primary">.dev</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8">
+        <div class="flex items-center gap-6 text-sm font-medium">
+          <a href="index.html" class="text-light-textLight dark:text-dark-textLight hover:text-light-primary dark:hover:text-dark-primary transition-colors">Home</a>
+          <a href="index.html#about" class="text-light-textLight dark:text-dark-textLight hover:text-light-primary dark:hover:text-dark-primary transition-colors">About</a>
+          <a href="projects.html" class="text-light-textLight dark:text-dark-textLight hover:text-light-primary dark:hover:text-dark-primary transition-colors">Projects</a>
+          <a href="contact.html" class="text-light-primary dark:text-dark-primary font-semibold border-b-2 border-light-primary dark:border-dark-primary">Contact</a>
+        </div>
+        
+        <button id="themeToggle" class="ml-6 theme-toggle bg-light-surfaceHighlight dark:bg-dark-surfaceHighlight text-light-text dark:text-dark-text hover:bg-light-surface dark:hover:bg-dark-surface border border-light-border dark:border-dark-border">
+          <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg id="moonIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <a href="#contact-form" class="ml-4 px-4 py-2 bg-light-primary dark:bg-dark-primary text-white rounded-full hover:bg-light-primary/90 dark:hover:bg-dark-primary/90 transition-colors font-semibold text-xs tracking-wide">
+          Send Message
         </a>
+      </nav>
 
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-          <a href="index.html" class="hover:text-white transition-colors">Home</a>
-          <a href="projects.html" class="hover:text-white transition-colors">Projects</a>
-          <a href="contact.html" class="px-4 py-2 bg-white text-black rounded-full hover:bg-zinc-200 transition-colors font-semibold text-xs tracking-wide">
-            Contact Me
-          </a>
-        </nav>
+      <div class="flex items-center gap-4 md:hidden">
+        <button id="themeToggleMobile" class="theme-toggle bg-light-surfaceHighlight dark:bg-dark-surfaceHighlight text-light-text dark:text-dark-text hover:bg-light-surface dark:hover:bg-dark-surface border border-light-border dark:border-dark-border">
+          <svg id="sunIconMobile" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg id="moonIconMobile" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
 
-        <button id="menuBtn" class="md:hidden text-zinc-300">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <button id="menuBtn" class="p-2 text-light-text dark:text-dark-text rounded-md hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
         </button>
       </div>
     </div>
 
-    <div id="mobileMenu" class="hidden md:hidden absolute w-full bg-surface/95 backdrop-blur-xl border-b border-white/10 transition-all">
-      <div class="flex flex-col p-6 space-y-4 text-center text-zinc-300">
-        <a href="index.html" class="hover:text-white py-2">Home</a>
-        <a href="projects.html" class="hover:text-white py-2">Projects</a>
-        <a href="contact.html" class="py-3 mt-2 bg-white text-black rounded-lg font-bold">Contact Me</a>
+    <div id="mobileMenu" class="hidden md:hidden absolute w-full bg-light-surface dark:bg-dark-surface border-b border-light-border dark:border-dark-border shadow-lg">
+      <div class="flex flex-col p-6 space-y-4 text-center font-medium">
+        <a href="index.html" class="py-2 text-light-text dark:text-dark-text hover:text-light-primary dark:hover:text-dark-primary transition-colors">Home</a>
+        <a href="index.html#about" class="py-2 text-light-text dark:text-dark-text hover:text-light-primary dark:hover:text-dark-primary transition-colors">About</a>
+        <a href="projects.html" class="py-2 text-light-text dark:text-dark-text hover:text-light-primary dark:hover:text-dark-primary transition-colors">Projects</a>
+        <a href="contact.html" class="py-2 text-light-primary dark:text-dark-primary font-semibold">Contact</a>
+        <a href="#contact-form" class="py-3 mt-2 bg-light-primary dark:bg-dark-primary text-white rounded-xl font-semibold">Send Message</a>
       </div>
     </div>
   </header>
 
-  <main class="pt-32 px-6 max-w-6xl mx-auto">
+  <!-- Contact Content -->
+  <main class="pt-24 md:pt-32 px-4 sm:px-6 max-w-6xl mx-auto pb-12">
 
-    <section class="mb-20">
-      <div class="reveal active">
-        <span class="text-primary font-bold tracking-wider uppercase text-xs mb-4 block">Get in Touch</span>
-        <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
+    <!-- Page Header -->
+    <section class="mb-12 sm:mb-16 reveal active">
+      <div class="text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-light-primary/10 dark:bg-dark-primary/10 border border-light-primary/20 dark:border-dark-primary/20 text-light-primary dark:text-dark-primary text-xs font-medium mb-4">
+          Get in Touch
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-light-text dark:text-dark-text mb-6">
           Let's start a <br>
           <span class="text-gradient">conversation.</span>
         </h1>
-        <p class="text-lg text-zinc-400 leading-relaxed max-w-md">
+        <p class="text-lg text-light-textLight dark:text-dark-textLight max-w-2xl mx-auto leading-relaxed">
           Whether you have a project in mind, a question about my work, or just want to say hi, I'd love to hear from you.
         </p>
       </div>
     </section>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-32">
-      
+    <!-- Contact Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start mb-16">
+
+      <!-- Contact Info -->
       <div class="reveal active space-y-6">
-        <div class="space-y-4 mt-8">
+        <div class="space-y-4 mt-4">
           
-          <a href="mailto:samarthnagpure47@gmail.com" class="group block p-6 glass rounded-2xl border border-white/5 hover:border-primary/30 transition-all duration-300">
+          <!-- Email -->
+          <a href="mailto:samarthnagpure47@gmail.com" class="group block p-5 sm:p-6 rounded-2xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border hover:border-light-primary/30 dark:hover:border-dark-primary/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-full bg-indigo-500/10 text-primary flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              <div class="w-12 h-12 rounded-full bg-light-primary/10 dark:bg-dark-primary/10 text-light-primary dark:text-dark-primary flex items-center justify-center group-hover:bg-light-primary group-hover:text-white dark:group-hover:bg-dark-primary transition-colors">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
               </div>
-              <div>
-                <p class="text-sm text-zinc-500 font-medium">Email Me</p>
-                <p class="text-lg font-semibold text-white">samarthnagpure47@gmail.com</p>
+              <div class="flex-1">
+                <p class="text-sm text-light-textLight dark:text-dark-textLight font-medium mb-1">Email Me</p>
+                <p class="text-lg font-semibold text-light-text dark:text-dark-text truncate">samarthnagpure47@gmail.com</p>
               </div>
             </div>
           </a>
 
-          <a href="https://www.linkedin.com/in/samarth-nagpure-30943b259" target="_blank" class="group block p-6 glass rounded-2xl border border-white/5 hover:border-blue-400/30 transition-all duration-300">
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/samarth-nagpure-30943b259" target="_blank" class="group block p-5 sm:p-6 rounded-2xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              <div class="w-12 h-12 rounded-full bg-blue-500/10 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-600 transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
               </div>
-              <div>
-                <p class="text-sm text-zinc-500 font-medium">Connect on LinkedIn</p>
-                <p class="text-lg font-semibold text-white">Samarth Nagpure</p>
+              <div class="flex-1">
+                <p class="text-sm text-light-textLight dark:text-dark-textLight font-medium mb-1">Connect on LinkedIn</p>
+                <p class="text-lg font-semibold text-light-text dark:text-dark-text">Samarth Nagpure</p>
               </div>
             </div>
           </a>
           
-          <div class="p-6 glass rounded-2xl border border-white/5 flex items-center gap-4">
-            <div class="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <!-- Location -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-emerald-500/10 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
             </div>
-            <div>
-              <p class="text-sm text-zinc-500 font-medium">Current Location</p>
-              <p class="text-lg font-semibold text-white">Yeola, Nashik, India</p>
+            <div class="flex-1">
+              <p class="text-sm text-light-textLight dark:text-dark-textLight font-medium mb-1">Current Location</p>
+              <p class="text-lg font-semibold text-light-text dark:text-dark-text">Yeola, Nashik, India</p>
+            </div>
+          </div>
+
+          <!-- Availability -->
+          <div class="p-5 sm:p-6 rounded-2xl bg-light-surfaceHighlight dark:bg-dark-surfaceHighlight border border-light-border dark:border-dark-border">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-light-text dark:text-dark-text mb-1">Available for opportunities</p>
+                <p class="text-sm text-light-textLight dark:text-dark-textLight">
+                  I'm currently open to freelance projects, internships, and full-time positions. Typically respond within 24 hours.
+                </p>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
 
-      <div class="reveal glass rounded-3xl p-8 md:p-10 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-indigo-400 to-secondary"></div>
+      <!-- Contact Form -->
+      <div id="contact-form" class="reveal rounded-2xl sm:rounded-3xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border p-6 sm:p-8 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1.5 sm:h-2 bg-gradient-to-r from-light-primary via-light-primary/80 to-light-secondary dark:from-dark-primary dark:via-dark-primary/80 dark:to-dark-secondary"></div>
 
-        <h3 class="text-2xl font-bold font-display text-white mb-6">Send a Message</h3>
+        <h3 class="text-2xl font-bold font-display text-light-text dark:text-dark-text mb-6">Send a Message</h3>
 
-        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4 sm:space-y-5">
           <input type="hidden" name="access_key" value="17b94126-3608-4f08-b99c-6f54ffe3875d" />
           
           <div class="group">
-            <label for="name" class="block text-sm font-semibold text-zinc-400 mb-2 ml-1">Your Name</label>
+            <label for="name" class="block text-sm font-semibold text-light-text dark:text-dark-text mb-2 ml-1">Your Name *</label>
             <input type="text" id="name" name="name" required placeholder="John Doe"
-              class="w-full px-5 py-3.5 rounded-xl bg-surface border border-white/10 
-              focus:bg-surfaceHighlight focus:border-primary focus:ring-4 focus:ring-indigo-500/10 outline-none 
-              transition-all duration-300 text-white placeholder-zinc-500" />
+              class="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border 
+              focus:bg-light-surfaceHighlight dark:focus:bg-dark-surfaceHighlight focus:border-light-primary dark:focus:border-dark-primary focus:ring-2 focus:ring-light-primary/10 dark:focus:ring-dark-primary/10 outline-none 
+              transition-all duration-300 text-light-text dark:text-dark-text placeholder-light-textLight/50 dark:placeholder-dark-textLight/50" />
           </div>
 
           <div class="group">
-            <label for="email" class="block text-sm font-semibold text-zinc-400 mb-2 ml-1">Your Email</label>
+            <label for="email" class="block text-sm font-semibold text-light-text dark:text-dark-text mb-2 ml-1">Your Email *</label>
             <input type="email" id="email" name="email" required placeholder="john@example.com"
-              class="w-full px-5 py-3.5 rounded-xl bg-surface border border-white/10 
-              focus:bg-surfaceHighlight focus:border-primary focus:ring-4 focus:ring-indigo-500/10 outline-none 
-              transition-all duration-300 text-white placeholder-zinc-500" />
+              class="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border 
+              focus:bg-light-surfaceHighlight dark:focus:bg-dark-surfaceHighlight focus:border-light-primary dark:focus:border-dark-primary focus:ring-2 focus:ring-light-primary/10 dark:focus:ring-dark-primary/10 outline-none 
+              transition-all duration-300 text-light-text dark:text-dark-text placeholder-light-textLight/50 dark:placeholder-dark-textLight/50" />
           </div>
 
           <div class="group">
-            <label for="message" class="block text-sm font-semibold text-zinc-400 mb-2 ml-1">Message</label>
-            <textarea id="message" name="message" rows="4" required placeholder="Tell me about your project..."
-              class="w-full px-5 py-3.5 rounded-xl bg-surface border border-white/10 
-              focus:bg-surfaceHighlight focus:border-primary focus:ring-4 focus:ring-indigo-500/10 outline-none 
-              transition-all duration-300 text-white placeholder-zinc-500 resize-none"></textarea>
+            <label for="subject" class="block text-sm font-semibold text-light-text dark:text-dark-text mb-2 ml-1">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Project Inquiry or Job Opportunity"
+              class="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border 
+              focus:bg-light-surfaceHighlight dark:focus:bg-dark-surfaceHighlight focus:border-light-primary dark:focus:border-dark-primary focus:ring-2 focus:ring-light-primary/10 dark:focus:ring-dark-primary/10 outline-none 
+              transition-all duration-300 text-light-text dark:text-dark-text placeholder-light-textLight/50 dark:placeholder-dark-textLight/50" />
           </div>
+
+          <div class="group">
+            <label for="message" class="block text-sm font-semibold text-light-text dark:text-dark-text mb-2 ml-1">Message *</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Tell me about your project, timeline, and budget..."
+              class="w-full px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border 
+              focus:bg-light-surfaceHighlight dark:focus:bg-dark-surfaceHighlight focus:border-light-primary dark:focus:border-dark-primary focus:ring-2 focus:ring-light-primary/10 dark:focus:ring-dark-primary/10 outline-none 
+              transition-all duration-300 text-light-text dark:text-dark-text placeholder-light-textLight/50 dark:placeholder-dark-textLight/50 resize-none"></textarea>
+          </div>
+
+          <!-- Honeypot spam protection -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
           <button type="submit"
-            class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-primary to-indigo-600 text-white font-bold text-lg 
-            hover:shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1 active:translate-y-0
-            transition-all duration-300 flex justify-center items-center gap-2">
+            class="w-full py-3.5 sm:py-4 px-6 rounded-xl bg-gradient-to-r from-light-primary to-light-primary/80 dark:from-dark-primary dark:to-dark-primary/80 text-white font-bold text-lg 
+            hover:shadow-lg hover:shadow-light-primary/20 dark:hover:shadow-dark-primary/20 transform hover:-translate-y-1 active:translate-y-0
+            transition-all duration-300 flex justify-center items-center gap-2 group">
             <span>Send Message</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
           </button>
         </form>
         
-        <p class="text-xs text-zinc-500 mt-6 text-center">
-          I usually respond within 24 hours. Your data is safe.
+        <p class="text-xs text-light-textLight dark:text-dark-textLight mt-6 text-center">
+          Your data is safe. I usually respond within 24 hours.
         </p>
+      </div>
+    </div>
+
+    <!-- Social Links -->
+    <div class="reveal delay-100 text-center">
+      <h3 class="text-2xl font-bold text-light-text dark:text-dark-text mb-6">Find me elsewhere</h3>
+      <div class="flex justify-center space-x-4 sm:space-x-6 mb-12">
+        <a href="https://github.com/Samarthnagpure-byte" target="_blank" class="group p-3 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight transition-all duration-300 hover:-translate-y-1">
+          <svg class="w-6 h-6 text-light-text dark:text-dark-text group-hover:text-light-primary dark:group-hover:text-dark-primary transition-colors" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          <span class="sr-only">GitHub</span>
+        </a>
+        <a href="https://instagram.com/itx_samarth_56" target="_blank" class="group p-3 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight transition-all duration-300 hover:-translate-y-1">
+          <svg class="w-6 h-6 text-light-text dark:text-dark-text group-hover:text-pink-500 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.608c-3.264 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.684-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.684.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.684.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.569 15.264.555 12 .555z"/>
+            <path d="M12 6.848c-2.834 0-5.152 2.318-5.152 5.152s2.318 5.152 5.152 5.152 5.152-2.318 5.152-5.152-2.318-5.152-5.152-5.152zm0 8.704c-1.96 0-3.552-1.592-3.552-3.552s1.592-3.552 3.552-3.552 3.552 1.592 3.552 3.552-1.592 3.552-3.552 3.552zm4.908-8.108c-.768 0-1.392.624-1.392 1.392s.624 1.392 1.392 1.392 1.392-.624 1.392-1.392-.624-1.392-1.392-1.392z"/>
+          </svg>
+          <span class="sr-only">Instagram</span>
+        </a>
+        <a href="mailto:samarthnagpure47@gmail.com" class="group p-3 rounded-xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight transition-all duration-300 hover:-translate-y-1">
+          <svg class="w-6 h-6 text-light-text dark:text-dark-text group-hover:text-light-primary dark:group-hover:text-dark-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          <span class="sr-only">Email</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- FAQ/Info -->
+    <div class="reveal delay-200 max-w-3xl mx-auto">
+      <div class="p-6 sm:p-8 rounded-2xl bg-light-surfaceHighlight dark:bg-dark-surfaceHighlight border border-light-border dark:border-dark-border">
+        <h3 class="text-xl font-bold text-light-text dark:text-dark-text mb-4">What to expect</h3>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-light-text dark:text-dark-text">
+              <strong>Quick Response:</strong> I typically reply within 24 hours on weekdays
+            </span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-light-text dark:text-dark-text">
+              <strong>Open to Discuss:</strong> Whether it's a small project or a full-time opportunity
+            </span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-light-text dark:text-dark-text">
+              <strong>Confidentiality:</strong> Your information and project details are kept private
+            </span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span class="text-light-text dark:text-dark-text">
+              <strong>Remote Work:</strong> Available for remote positions and freelance projects
+            </span>
+          </li>
+        </ul>
       </div>
     </div>
 
   </main>
 
-  <footer class="bg-surface border-t border-white/5 pt-20 pb-10">
-    <div class="max-w-6xl mx-auto px-6 text-center reveal">
-      <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-8">Ready to collaborate?</h2>
-      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-        <a href="mailto:samarthnagpure47@gmail.com" class="px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-zinc-200 transition-colors">
-          Send Email
+  <!-- Footer (Same as other pages) -->
+  <footer class="bg-light-surface dark:bg-dark-surface border-t border-light-border dark:border-dark-border pt-12 sm:pt-20 pb-8 sm:pb-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+      <div class="flex justify-center space-x-6 sm:space-x-8 mb-8 sm:mb-12">
+        <a href="mailto:samarthnagpure47@gmail.com" class="text-light-textLight dark:text-dark-textLight hover:text-light-primary dark:hover:text-dark-primary transition-colors">
+          <span class="sr-only">Email</span>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
         </a>
-        <a href="https://github.com/Samarthnagpure-byte" target="_blank" class="px-8 py-4 rounded-full border border-white/20 text-white font-medium hover:bg-white/5 transition-colors">
-          Check GitHub
+        <a href="https://github.com/Samarthnagpure-byte" target="_blank" class="text-light-textLight dark:text-dark-textLight hover:text-light-primary dark:hover:text-dark-primary transition-colors">
+          <span class="sr-only">GitHub</span>
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com/itx_samarth_56" target="_blank" class="text-light-textLight dark:text-dark-textLight hover:text-pink-500 transition-colors">
+          <span class="sr-only">Instagram</span>
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.608c-3.264 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.684-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.684.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.684.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.569 15.264.555 12 .555z"/>
+            <path d="M12 6.848c-2.834 0-5.152 2.318-5.152 5.152s2.318 5.152 5.152 5.152 5.152-2.318 5.152-5.152-2.318-5.152-5.152-5.152zm0 8.704c-1.96 0-3.552-1.592-3.552-3.552s1.592-3.552 3.552-3.552 3.552 1.592 3.552 3.552-1.592 3.552-3.552 3.552zm4.908-8.108c-.768 0-1.392.624-1.392 1.392s.624 1.392 1.392 1.392 1.392-.624 1.392-1.392-.624-1.392-1.392-1.392z"/>
+          </svg>
         </a>
       </div>
 
-      <div class="flex justify-center space-x-8 mb-12">
-        <a href="mailto:samarthnagpure47@gmail.com" class="text-zinc-400 hover:text-white transition-colors"><span class="sr-only">Email</span><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
-        <a href="https://github.com/Samarthnagpure-byte" target="_blank" class="text-zinc-400 hover:text-white transition-colors"><span class="sr-only">GitHub</span><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a>
-        <a href="https://instagram.com/itx_samarth_56" target="_blank" class="text-zinc-400 hover:text-pink-500 transition-colors"><span class="sr-only">Instagram</span><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.608c-3.264 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.684-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.684.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.684.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.569 15.264.555 12 .555z"/><path d="M12 6.848c-2.834 0-5.152 2.318-5.152 5.152s2.318 5.152 5.152 5.152 5.152-2.318 5.152-5.152-2.318-5.152-5.152-5.152zm0 8.704c-1.96 0-3.552-1.592-3.552-3.552s1.592-3.552 3.552-3.552 3.552 1.592 3.552 3.552-1.592 3.552-3.552 3.552zm4.908-8.108c-.768 0-1.392.624-1.392 1.392s.624 1.392 1.392 1.392 1.392-.624 1.392-1.392-.624-1.392-1.392-1.392z"/></svg></a>
-      </div>
-      <div class="text-zinc-600 text-sm">
-        &copy; 2025 Samarth Nagpure.
+      <div class="border-t border-light-border dark:border-dark-border pt-8">
+        <p class="text-light-textLight dark:text-dark-textLight text-sm">
+          &copy; 2025 Samarth Nagpure. All rights reserved.
+        </p>
       </div>
     </div>
   </footer>
 
+  <!-- Same JavaScript as index.html -->
   <script>
-    // Mobile Menu Logic
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    let isMenuOpen = false;
-
-    menuBtn.addEventListener('click', () => {
-      isMenuOpen = !isMenuOpen;
-      if (isMenuOpen) {
-        mobileMenu.classList.remove('hidden');
-      } else {
-        mobileMenu.classList.add('hidden');
+    // Theme Management
+    class ThemeManager {
+      constructor() {
+        this.themeToggle = document.getElementById('themeToggle');
+        this.themeToggleMobile = document.getElementById('themeToggleMobile');
+        this.sunIcon = document.getElementById('sunIcon');
+        this.moonIcon = document.getElementById('moonIcon');
+        this.sunIconMobile = document.getElementById('sunIconMobile');
+        this.moonIconMobile = document.getElementById('moonIconMobile');
+        
+        this.init();
       }
-    });
-
-    // Intersection Observer for Scroll Animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target);
+      
+      init() {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        this.setTheme(savedTheme);
+        
+        this.themeToggle?.addEventListener('click', () => this.toggleTheme());
+        this.themeToggleMobile?.addEventListener('click', () => this.toggleTheme());
+      }
+      
+      setTheme(theme) {
+        const html = document.documentElement;
+        
+        if (theme === 'dark') {
+          html.classList.add('dark');
+          html.classList.remove('light');
+          this.showMoonIcon();
+        } else {
+          html.classList.add('light');
+          html.classList.remove('dark');
+          this.showSunIcon();
         }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        localStorage.setItem('theme', theme);
+        
+        html.classList.add('theme-transition');
+        setTimeout(() => {
+          html.classList.remove('theme-transition');
+        }, 300);
+      }
+      
+      toggleTheme() {
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        this.setTheme(newTheme);
+      }
+      
+      showSunIcon() {
+        this.sunIcon?.classList.remove('hidden');
+        this.moonIcon?.classList.add('hidden');
+        this.sunIconMobile?.classList.remove('hidden');
+        this.moonIconMobile?.classList.add('hidden');
+      }
+      
+      showMoonIcon() {
+        this.sunIcon?.classList.add('hidden');
+        this.moonIcon?.classList.remove('hidden');
+        this.sunIconMobile?.classList.add('hidden');
+        this.moonIconMobile?.classList.remove('hidden');
+      }
+    }
+    
+    // Mobile Menu
+    class MobileMenu {
+      constructor() {
+        this.menuBtn = document.getElementById('menuBtn');
+        this.mobileMenu = document.getElementById('mobileMenu');
+        this.isOpen = false;
+        
+        this.init();
+      }
+      
+      init() {
+        this.menuBtn?.addEventListener('click', () => this.toggleMenu());
+        
+        this.mobileMenu?.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => this.closeMenu());
+        });
+        
+        document.addEventListener('click', (e) => {
+          if (this.isOpen && !this.mobileMenu.contains(e.target) && !this.menuBtn.contains(e.target)) {
+            this.closeMenu();
+          }
+        });
+      }
+      
+      toggleMenu() {
+        this.isOpen = !this.isOpen;
+        if (this.isOpen) {
+          this.openMenu();
+        } else {
+          this.closeMenu();
+        }
+      }
+      
+      openMenu() {
+        this.mobileMenu?.classList.remove('hidden');
+        setTimeout(() => {
+          this.mobileMenu?.classList.remove('opacity-0', 'scale-95');
+          this.mobileMenu?.classList.add('opacity-100', 'scale-100');
+        }, 10);
+      }
+      
+      closeMenu() {
+        this.isOpen = false;
+        this.mobileMenu?.classList.remove('opacity-100', 'scale-100');
+        this.mobileMenu?.classList.add('opacity-0', 'scale-95');
+        setTimeout(() => {
+          this.mobileMenu?.classList.add('hidden');
+        }, 300);
+      }
+    }
+    
+    // Scroll Animations
+    class ScrollAnimations {
+      constructor() {
+        this.observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1
+        };
+        
+        this.init();
+      }
+      
+      init() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, this.observerOptions);
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      }
+    }
+    
+    // Form submission feedback
+    class ContactForm {
+      constructor() {
+        this.form = document.querySelector('form');
+        this.init();
+      }
+      
+      init() {
+        if (this.form) {
+          this.form.addEventListener('submit', (e) => {
+            // You can add form validation or submission handling here
+            const submitBtn = this.form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = `
+              <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Sending...
+            `;
+            submitBtn.disabled = true;
+            
+            // Reset after 3 seconds (for demo)
+            setTimeout(() => {
+              submitBtn.innerHTML = originalText;
+              submitBtn.disabled = false;
+              
+              // Show success message (you can customize this)
+              alert('Message sent successfully! I\'ll get back to you soon.');
+              this.form.reset();
+            }, 3000);
+          });
+        }
+      }
+    }
+    
+    // Smooth scroll for anchor links
+    class SmoothScroll {
+      constructor() {
+        this.init();
+      }
+      
+      init() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', (e) => {
+            const href = anchor.getAttribute('href');
+            
+            if (href === '#' || href === '#contact-form') {
+              e.preventDefault();
+              const targetElement = document.querySelector(href);
+              if (targetElement) {
+                const headerHeight = 80;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
+              }
+            }
+          });
+        });
+      }
+    }
+    
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      new ThemeManager();
+      new MobileMenu();
+      new ScrollAnimations();
+      new ContactForm();
+      new SmoothScroll();
+    });
   </script>
 </body>
 </html>
