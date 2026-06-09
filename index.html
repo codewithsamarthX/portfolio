@@ -24,7 +24,6 @@
             display: ['Space Grotesk', 'sans-serif'],
           },
           colors: {
-            // Light theme colors
             light: {
               background: '#ffffff',
               surface: '#f8fafc',
@@ -36,7 +35,6 @@
               border: '#e2e8f0',
               card: '#ffffff',
             },
-            // Dark theme colors
             dark: {
               background: '#09090b',
               surface: '#18181b',
@@ -60,11 +58,11 @@
           keyframes: {
             scroll: {
               '0%': { transform: 'translateX(0)' },
-              '100%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(-50%)' },
             },
             'theme-switch': {
-              '0%': { opacity: 0.5, transform: 'scale(0.95)' },
-              '100%': { opacity: 1, transform: 'scale(1)' },
+              '0%': { opacity: '0.5', transform: 'scale(0.95)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
             }
           }
         }
@@ -73,7 +71,6 @@
   </script>
 
   <style>
-    /* Custom Scrollbar for light mode */
     :root {
       --scrollbar-track: #f8fafc;
       --scrollbar-thumb: #cbd5e1;
@@ -104,27 +101,22 @@
       background: var(--scrollbar-thumb-hover);
     }
 
-    /* Smooth transitions */
     * {
-      transition: background-color 0.3s ease, border-color 0.3s ease;
+      transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     }
 
-    /* Glass effects */
     .glass-light {
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    .glass-dark {
-      background: rgba(24, 24, 27, 0.7);
+    .dark .glass-dark {
+      background: rgba(24, 24, 27, 0.75);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* Text gradient */
     .text-gradient {
       background: linear-gradient(to right, #4f46e5, #7c3aed, #0ea5e9);
       -webkit-background-clip: text;
@@ -139,7 +131,6 @@
       background-clip: text;
     }
 
-    /* Reveal animation */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
@@ -151,28 +142,10 @@
       transform: translateY(0);
     }
 
-    /* Theme switch animation */
     .theme-transition {
       animation: theme-switch 0.3s ease-out;
     }
 
-    /* Theme toggle button */
-    .theme-toggle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .theme-toggle:hover {
-      transform: scale(1.1);
-    }
-
-    /* Blob backgrounds */
     .blob-light {
       position: absolute;
       filter: blur(80px);
@@ -181,7 +154,7 @@
       animation: pulse 10s infinite;
     }
 
-    .blob-dark {
+    .dark .blob-dark {
       position: absolute;
       filter: blur(80px);
       z-index: -1;
@@ -193,31 +166,21 @@
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.05); }
     }
-
-    /* Tech stack scrolling */
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
   </style>
 </head>
 
 <body class="bg-light-background text-light-text font-sans antialiased selection:bg-light-primary/20 selection:text-light-primary overflow-x-hidden transition-colors duration-300 dark:bg-dark-background dark:text-dark-text dark:selection:bg-dark-primary/30">
 
-  <!-- Background elements -->
   <div class="fixed inset-0 z-[-2] bg-grid-light bg-[length:50px_50px] dark:bg-grid-dark"></div>
   <div class="blob-light bg-indigo-300 w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2 dark:blob-dark dark:bg-indigo-900/20"></div>
   <div class="blob-light bg-sky-200 w-80 h-80 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3 dark:blob-dark dark:bg-purple-900/20"></div>
 
-  <!-- Header -->
   <header class="fixed w-full top-0 z-50 transition-all duration-300 glass-light dark:glass-dark border-b border-light-border dark:border-dark-border">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex justify-between items-center">
-      <!-- Logo -->
       <a href="index.html" class="text-xl font-bold font-display text-light-text dark:text-dark-text tracking-tight hover:opacity-80 transition-opacity">
         Samarth<span class="text-light-primary dark:text-dark-primary">.dev</span>
       </a>
 
-      <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-8">
         <div class="flex items-center gap-6 text-sm font-medium">
           <a href="index.html#about" class="text-light-textLight dark:text-dark-textLight hover:text-light-primary dark:hover:text-dark-primary transition-colors">About</a>
@@ -226,8 +189,7 @@
           <a href="contact.html" class="text-light-textLight dark:text-dark-textLight hover:text-light-primary dark:hover:text-dark-primary transition-colors">Contact</a>
         </div>
         
-        <!-- Theme Toggle -->
-        <button id="themeToggle" class="ml-6 theme-toggle bg-light-surfaceHighlight dark:bg-dark-surfaceHighlight text-light-text dark:text-dark-text hover:bg-light-surface dark:hover:bg-dark-surface border border-light-border dark:border-dark-border">
+        <button id="themeToggle" aria-label="Toggle Theme" class="ml-6 w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-light-surfaceHighlight dark:bg-dark-surfaceHighlight text-light-text dark:text-dark-text hover:bg-light-surface dark:hover:bg-dark-surface border border-light-border dark:border-dark-border hover:scale-110 transition-all">
           <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
           </svg>
@@ -236,16 +198,13 @@
           </svg>
         </button>
 
-        <!-- CTA Button -->
         <a href="contact.html" class="ml-4 px-4 py-2 bg-light-primary dark:bg-dark-primary text-white rounded-full hover:bg-light-primary/90 dark:hover:bg-dark-primary/90 transition-colors font-semibold text-xs tracking-wide">
           Let's Talk
         </a>
       </nav>
 
-      <!-- Mobile menu button -->
       <div class="flex items-center gap-4 md:hidden">
-        <!-- Theme Toggle Mobile -->
-        <button id="themeToggleMobile" class="theme-toggle bg-light-surfaceHighlight dark:bg-dark-surfaceHighlight text-light-text dark:text-dark-text hover:bg-light-surface dark:hover:bg-dark-surface border border-light-border dark:border-dark-border">
+        <button id="themeToggleMobile" aria-label="Toggle Theme" class="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer bg-light-surfaceHighlight dark:bg-dark-surfaceHighlight text-light-text dark:text-dark-text hover:bg-light-surface dark:hover:bg-dark-surface border border-light-border dark:border-dark-border">
           <svg id="sunIconMobile" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
           </svg>
@@ -254,7 +213,7 @@
           </svg>
         </button>
 
-        <button id="menuBtn" class="p-2 text-light-text dark:text-dark-text rounded-md hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight focus:outline-none">
+        <button id="menuBtn" aria-label="Toggle Mobile Menu" class="p-2 text-light-text dark:text-dark-text rounded-md hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight focus:outline-none">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -262,8 +221,7 @@
       </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden absolute w-full bg-light-surface dark:bg-dark-surface border-b border-light-border dark:border-dark-border shadow-lg">
+    <div id="mobileMenu" class="hidden md:hidden absolute w-full bg-light-surface dark:bg-dark-surface border-b border-light-border dark:border-dark-border shadow-lg transition-all duration-300">
       <div class="flex flex-col p-6 space-y-4 text-center font-medium">
         <a href="index.html#about" class="py-2 text-light-text dark:text-dark-text hover:text-light-primary dark:hover:text-dark-primary transition-colors">About</a>
         <a href="index.html#tech" class="py-2 text-light-text dark:text-dark-text hover:text-light-primary dark:hover:text-dark-primary transition-colors">Stack</a>
@@ -274,11 +232,8 @@
     </div>
   </header>
 
-  <!-- Main Content -->
   <main class="pt-24 md:pt-32 px-4 sm:px-6 max-w-6xl mx-auto">
 
-    <!-- Hero Section -->
-        <!-- Hero Section -->
     <section class="min-h-[70vh] flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12 mb-16 sm:mb-20">
       <div class="md:w-3/5 reveal active">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-light-primary/10 dark:bg-dark-primary/10 border border-light-primary/20 dark:border-dark-primary/20 text-light-primary dark:text-dark-primary text-xs font-medium mb-6">
@@ -302,7 +257,7 @@
           <a href="projects.html" class="px-5 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full bg-light-primary dark:bg-dark-primary text-white font-bold hover:bg-light-primary/90 dark:hover:bg-dark-primary/90 transition-all hover:-translate-y-1 text-sm sm:text-base">
             View Projects
           </a>
-          <a href="https://github.com/Samarthnagpure-byte" target="_blank" class="px-5 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text font-medium hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight transition-all hover:-translate-y-1 flex items-center gap-2 border border-light-border dark:border-dark-border text-sm sm:text-base">
+          <a href="https://github.com/Samarthnagpure-byte" target="_blank" rel="noopener noreferrer" class="px-5 sm:px-6 md:px-8 py-3 sm:py-4 rounded-full bg-light-surface dark:bg-dark-surface text-light-text dark:text-dark-text font-medium hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight transition-all hover:-translate-y-1 flex items-center gap-2 border border-light-border dark:border-dark-border text-sm sm:text-base">
             <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
             </svg>
@@ -311,15 +266,14 @@
         </div>
       </div>
 
-      <div class="md:w-2/5 relative reveal delay-100 w-full max-w-[280px] sm:max-w-[320px] md:max-w-none mx-auto md:mx-0">
+      <div class="md:w-2/5 relative reveal w-full max-w-[280px] sm:max-w-[320px] md:max-w-none mx-auto md:mx-0">
         <div class="relative group">
           <div class="absolute -inset-2 sm:-inset-3 md:-inset-4 bg-gradient-to-r from-light-primary to-light-secondary dark:from-dark-primary dark:to-dark-secondary rounded-2xl blur opacity-20 dark:opacity-30 group-hover:opacity-30 dark:group-hover:opacity-40 transition duration-500"></div>
           <div class="relative aspect-square overflow-hidden rounded-2xl border-2 border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface w-full">
             <img src="IMG_20250203_221809.png" alt="Samarth Nagpure" class="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700">
           </div>
           
-          <!-- Floating badge - smaller on mobile -->
-          <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 md:-bottom-6 md:-left-6 bg-light-surface dark:bg-dark-surface p-2 sm:p-3 md:p-4 rounded-xl border border-light-border dark:border-dark-border shadow-xl animate-bounce">
+          <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 md:-bottom-6 md:-left-6 bg-light-surface dark:bg-dark-surface p-2 sm:p-3 md:p-4 rounded-xl border border-light-border dark:border-dark-border shadow-xl transform group-hover:translate-y-[-4px] transition-transform">
             <div class="flex items-center gap-2 sm:gap-3">
               <div class="bg-green-500/10 dark:bg-green-500/20 p-1.5 sm:p-2 rounded-lg text-green-600 dark:text-green-400">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -335,44 +289,42 @@
         </div>
       </div>
     </section>
-    <!-- Tech Stack Section -->
+
     <section id="tech" class="py-6 sm:py-10 border-y border-light-border dark:border-dark-border bg-light-surface/50 dark:bg-dark-surface/50 -mx-4 sm:-mx-6 px-4 sm:px-6 overflow-hidden mb-16 sm:mb-20">
-      <div class="relative flex overflow-x-hidden">
-        <div class="animate-scroll flex whitespace-nowrap gap-8 sm:gap-12 items-center py-2">
-          <!-- Tech items (repeated for seamless scroll) -->
+      <div class="relative w-full flex overflow-x-hidden">
+        <div class="animate-scroll flex whitespace-nowrap gap-8 sm:gap-12 items-center py-2 min-w-full">
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Java
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Java
           </span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Python
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Python
           </span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> HTML5
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> HTML5
           </span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> MySQL
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> MySQL
           </span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Git
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Git
           </span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">☕ Java Swing</span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">🧩 DSA</span>
           
-          <!-- Duplicate for seamless loop -->
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Java
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Java
           </span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Python
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Python
           </span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> HTML5
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> HTML5
           </span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> MySQL
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> MySQL
           </span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Git
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-6 h-6 sm:w-8 sm:h-8 grayscale hover:grayscale-0 transition-all"> Git
           </span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">☕ Java Swing</span>
           <span class="text-lg sm:text-2xl font-display font-bold text-light-textLight dark:text-dark-textLight flex items-center gap-2">🧩 DSA</span>
@@ -380,7 +332,6 @@
       </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="mb-20 sm:mb-32">
       <div class="mb-8 sm:mb-12 reveal">
         <h2 class="text-3xl sm:text-4xl font-display font-bold text-light-text dark:text-dark-text mb-4">About Me</h2>
@@ -388,11 +339,10 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 reveal">
-        <!-- Main about card -->
         <div class="md:col-span-2 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border hover:border-light-primary/30 dark:hover:border-dark-primary/30 transition-colors">
           <h3 class="text-xl sm:text-2xl font-bold text-light-text dark:text-dark-text mb-4">Turning ideas into functional code.</h3>
           <p class="text-light-textLight dark:text-dark-textLight leading-relaxed mb-4">
-            I'm a <strong>20-year-old software developer</strong> pursuing my BCA. My journey involves everything from designing robust billing systems to exploring the future of IoT automation.
+            I'm a <strong class="text-light-text dark:text-dark-text">21-year-old software developer</strong> pursuing my BCA. My journey involves everything from designing robust billing systems to exploring the future of IoT automation.
           </p>
           <p class="text-light-textLight dark:text-dark-textLight leading-relaxed mb-6">
             I am constantly learning, adapting, and pushing the boundaries of what I can build. Passionate about clean code, intuitive design, and solving real-world problems.
@@ -409,7 +359,6 @@
           </div>
         </div>
 
-        <!-- Stats cards -->
         <div class="grid grid-cols-2 md:grid-cols-1 gap-4 sm:gap-6">
           <div class="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border flex flex-col justify-center items-center text-center group hover:border-light-primary/30 dark:hover:border-dark-primary/30 transition-colors">
             <span class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-light-primary dark:text-dark-primary group-hover:scale-110 transition-transform">5+</span>
@@ -422,7 +371,6 @@
           </div>
         </div>
 
-        <!-- Location card -->
         <div class="md:col-span-3 p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-light-surfaceHighlight dark:bg-dark-surfaceHighlight border border-light-border dark:border-dark-border relative overflow-hidden group">
           <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
@@ -437,7 +385,6 @@
       </div>
     </section>
 
-    <!-- Featured Projects -->
     <section id="featured-projects" class="mb-20 sm:mb-32">
       <div class="flex justify-between items-end mb-8 sm:mb-12 reveal">
         <div>
@@ -452,7 +399,6 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-        <!-- Project 1 -->
         <article class="group relative rounded-2xl sm:rounded-3xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border overflow-hidden hover:border-light-primary/30 dark:hover:border-dark-primary/30 transition-all duration-500 reveal">
           <div class="absolute inset-0 bg-gradient-to-br from-light-primary/5 dark:from-dark-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           
@@ -463,7 +409,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                 </svg>
               </div>
-              <a href="projects.html#billing-software" class="p-2 rounded-full border border-light-border dark:border-dark-border hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight text-light-textLight dark:text-dark-textLight hover:text-light-text dark:hover:text-dark-text transition-colors">
+              <a href="projects.html#billing-software" aria-label="Billing Software Details" class="p-2 rounded-full border border-light-border dark:border-dark-border hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight text-light-textLight dark:text-dark-textLight hover:text-light-text dark:hover:text-dark-text transition-colors">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                 </svg>
@@ -482,8 +428,7 @@
           </div>
         </article>
 
-        <!-- Project 2 -->
-        <article class="group relative rounded-2xl sm:rounded-3xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border overflow-hidden hover:border-light-primary/30 dark:hover:border-dark-primary/30 transition-all duration-500 reveal delay-100">
+        <article class="group relative rounded-2xl sm:rounded-3xl bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border overflow-hidden hover:border-light-primary/30 dark:hover:border-dark-primary/30 transition-all duration-500 reveal">
           <div class="absolute inset-0 bg-gradient-to-br from-light-primary/5 dark:from-dark-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           
           <div class="p-6 sm:p-8 h-full flex flex-col">
@@ -493,7 +438,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                 </svg>
               </div>
-              <a href="projects.html#iot-project" class="p-2 rounded-full border border-light-border dark:border-dark-border hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight text-light-textLight dark:text-dark-textLight hover:text-light-text dark:hover:text-dark-text transition-colors">
+              <a href="projects.html#iot-project" aria-label="IoT Project Details" class="p-2 rounded-full border border-light-border dark:border-dark-border hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight text-light-textLight dark:text-dark-textLight hover:text-light-text dark:hover:text-dark-text transition-colors">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                 </svg>
@@ -522,7 +467,6 @@
 
   </main>
 
-  <!-- Footer -->
   <footer class="bg-light-surface dark:bg-dark-surface border-t border-light-border dark:border-dark-border pt-12 sm:pt-20 pb-8 sm:pb-10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center reveal">
       <h2 class="text-3xl sm:text-5xl font-display font-bold text-light-text dark:text-dark-text mb-6 sm:mb-8">Let's build something amazing.</h2>
@@ -534,7 +478,7 @@
         <a href="mailto:samarthnagpure47@gmail.com" class="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-light-primary dark:bg-dark-primary text-white font-bold hover:bg-light-primary/90 dark:hover:bg-dark-primary/90 transition-colors">
           Say Hello 👋
         </a>
-        <a href="https://github.com/codewithsamarthX" target="_blank" class="px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-light-border dark:border-dark-border text-light-text dark:text-dark-text font-medium hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight transition-colors">
+        <a href="https://github.com/codewithsamarthX" target="_blank" rel="noopener noreferrer" class="px-6 sm:px-8 py-3 sm:py-4 rounded-full border border-light-border dark:border-dark-border text-light-text dark:text-dark-text font-medium hover:bg-light-surfaceHighlight dark:hover:bg-dark-surfaceHighlight transition-colors">
           Check GitHub
         </a>
       </div>
@@ -546,13 +490,13 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
           </svg>
         </a>
-        <a href="https://github.com/codewithsamarthX" target="_blank" class="text-light-textLight dark:text-dark-textLight hover:text-light-primary dark:hover:text-dark-primary transition-colors">
+        <a href="https://github.com/codewithsamarthX" target="_blank" rel="noopener noreferrer" class="text-light-textLight dark:text-dark-textLight hover:text-light-primary dark:hover:text-dark-primary transition-colors">
           <span class="sr-only">GitHub</span>
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
           </svg>
         </a>
-        <a href="https://instagram.com/itx_samarth_56" target="_blank" class="text-light-textLight dark:text-dark-textLight hover:text-pink-500 transition-colors">
+        <a href="https://instagram.com/itx_samarth_56" target="_blank" rel="noopener noreferrer" class="text-light-textLight dark:text-dark-textLight hover:text-pink-500 transition-colors">
           <span class="sr-only">Instagram</span>
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163m0-1.608c-3.264 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.684-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.684.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.684.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.569 15.264.555 12 .555z"/>
@@ -563,15 +507,13 @@
 
       <div class="border-t border-light-border dark:border-dark-border pt-8">
         <p class="text-light-textLight dark:text-dark-textLight text-sm">
-          &copy; 2025 Samarth Nagpure. All rights reserved.
+          &copy; 2026 Samarth Nagpure. All rights reserved.
         </p>
       </div>
     </div>
   </footer>
 
-  <!-- JavaScript -->
   <script>
-    // Theme Management
     class ThemeManager {
       constructor() {
         this.themeToggle = document.getElementById('themeToggle');
@@ -585,11 +527,9 @@
       }
       
       init() {
-        // Get saved theme or default to dark
         const savedTheme = localStorage.getItem('theme') || 'dark';
         this.setTheme(savedTheme);
         
-        // Add event listeners
         this.themeToggle?.addEventListener('click', () => this.toggleTheme());
         this.themeToggleMobile?.addEventListener('click', () => this.toggleTheme());
       }
@@ -607,10 +547,8 @@
           this.showSunIcon();
         }
         
-        // Save to localStorage
         localStorage.setItem('theme', theme);
         
-        // Add animation class
         html.classList.add('theme-transition');
         setTimeout(() => {
           html.classList.remove('theme-transition');
@@ -638,7 +576,6 @@
       }
     }
     
-    // Mobile Menu
     class MobileMenu {
       constructor() {
         this.menuBtn = document.getElementById('menuBtn');
@@ -649,14 +586,15 @@
       }
       
       init() {
-        this.menuBtn?.addEventListener('click', () => this.toggleMenu());
+        this.menuBtn?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.toggleMenu();
+        });
         
-        // Close menu when clicking links
         this.mobileMenu?.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', () => this.closeMenu());
         });
         
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
           if (this.isOpen && !this.mobileMenu.contains(e.target) && !this.menuBtn.contains(e.target)) {
             this.closeMenu();
@@ -675,29 +613,20 @@
       
       openMenu() {
         this.mobileMenu?.classList.remove('hidden');
-        setTimeout(() => {
-          this.mobileMenu?.classList.remove('opacity-0', 'scale-95');
-          this.mobileMenu?.classList.add('opacity-100', 'scale-100');
-        }, 10);
       }
       
       closeMenu() {
         this.isOpen = false;
-        this.mobileMenu?.classList.remove('opacity-100', 'scale-100');
-        this.mobileMenu?.classList.add('opacity-0', 'scale-95');
-        setTimeout(() => {
-          this.mobileMenu?.classList.add('hidden');
-        }, 300);
+        this.mobileMenu?.classList.add('hidden');
       }
     }
     
-    // Scroll Animations
     class ScrollAnimations {
       constructor() {
         this.observerOptions = {
           root: null,
           rootMargin: '0px',
-          threshold: 0.1
+          threshold: 0.05
         };
         
         this.init();
@@ -717,7 +646,6 @@
       }
     }
     
-    // Smooth scrolling for anchor links
     class SmoothScroll {
       constructor() {
         this.init();
@@ -727,17 +655,12 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
           anchor.addEventListener('click', (e) => {
             const href = anchor.getAttribute('href');
-            
-            // Skip if it's just "#"
-            if (href === '#') return;
-            
-            // If it's an external page with anchor, let it navigate
-            if (href.includes('.html#')) return;
+            if (href === '#' || href.includes('.html#')) return;
             
             const targetElement = document.querySelector(href);
             if (targetElement) {
               e.preventDefault();
-              const headerHeight = 80; // Height of fixed header
+              const headerHeight = 64; 
               const elementPosition = targetElement.getBoundingClientRect().top;
               const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
               
@@ -751,7 +674,6 @@
       }
     }
     
-    // Initialize everything when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
       new ThemeManager();
       new MobileMenu();
@@ -761,4 +683,3 @@
   </script>
 </body>
 </html>
-
